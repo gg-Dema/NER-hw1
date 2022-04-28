@@ -1,0 +1,17 @@
+CLEAN IMG IN DOCKER 
+docker rmi $(docker images -a -q) 
+
+(baseline)
+test 0: normal model (word emb by hand, lstm bi: drop 0.3, lr std) ---------------> f1 = 18%
+
+(model_v1_0)
+test 0.0: model + pos (word emb, pos_tag NON NORM, lstm_bi: drop 0.3, lr std) ----> f1 = 14%, acc = 0.83
+
+(model_v1)
+model + pos (word emb, pos_tag_norm, lstm_bi2, sgd std) ----> f1 = 2% acc = 0.80
+
+(model_v2)
+model + pos (word emb, pos_tag_nomrNOGRAD, lstm_bi2, sgd std, early stopping=5) ---> f1 = 0,021
+
+(model_v3)
+word emb, pos_tag_norm, lstm_bi2, sgd lr 0,001, early_stopping Pat=3)----> f1
